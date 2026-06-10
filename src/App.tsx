@@ -1,6 +1,8 @@
 import "./App.css";
+import SelectedClass from "./components/SelectedClass";
+import Class from "./components/SelectedClass";
 
-function App() {
+const App = () => {
   return (
     <>
       <h1>Schedule Builder</h1>
@@ -88,10 +90,12 @@ function App() {
             </div>
             <div className="dayOfWeek">
               Monday
-              <p className="classObject">testing1 with course name and time</p>
-              <p className="classObject">testing1</p>
-              <p className="classObject">testing1</p>
-              <p className="classObject">testing1</p>
+              <SelectedClass
+                day="Monday"
+                name="CST 1201"
+                start="12:00PM"
+                end="1:00PM"
+              />
             </div>
             <div className="dayOfWeek">
               Tuesday
@@ -126,6 +130,6 @@ function App() {
       </form>
     </>
   );
-}
+};
 
 export default App;
