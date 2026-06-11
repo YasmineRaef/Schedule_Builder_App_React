@@ -5,6 +5,22 @@ import { useState } from "react";
 const App = () => {
   //Business Logic
   const [classes, setClasses] = useState([]);
+  const timeSlots = [
+    "",
+    "8 AM",
+    "9 AM",
+    "10 AM",
+    "11 AM",
+    "12 PM",
+    "1 PM",
+    "2 PM",
+    "3 PM",
+    "4 PM",
+    "5 PM",
+    "6 PM",
+    "7 PM",
+    "8 PM",
+  ];
 
   return (
     <>
@@ -74,6 +90,13 @@ const App = () => {
           </div>
           <hr />
           <div className="gridLayout">
+            <div className="timeRuler">
+              {timeSlots.map((time) => (
+                <div className="timeLabel" key={time}>
+                  {time}
+                </div>
+              ))}
+            </div>
             {[
               "Monday",
               "Tuesday",
@@ -84,7 +107,7 @@ const App = () => {
               "Sunday",
             ].map((day) => (
               <div className="dayOfWeek" key="dayOfWeek">
-                <strong>{day}</strong>
+                <strong className="dayHeader">{day}</strong>
                 {classes
                   //@ts-expect-error
                   .filter((course) => course.day === day)
