@@ -46,46 +46,44 @@ h2 {
 }
 
 .timeColumn {
-  margin-top: 20px;
+  margin-top: 20px; /*Extra += 20 px*/
   display: flex;
   flex-direction: column;
 }
 
 .timeLabel {
-  height: 32px;
+  height: 32px; /*Extra += 32 px for white space before time*/
   border-bottom: 1px solid #ddd;
   font-size: 12px;
-  padding-top: 10px;
+  padding-top: 10px; /*Extra += 10 px*/
 }
 
 .dayHeader {
   border-bottom: 3px solid #52505060;
-  padding-bottom: 10px;
-  height: 20px;
+  padding-bottom: 10px; /*Extra += 10 px*/
+  height: 20px; /*Extra += 20 px*/
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .dayOfWeek {
-  padding: 8px;
+  padding: 8px; /*Extra += 8 px*/
+  position: relative;
   text-align: center;
   border: 2px solid grey;
   background-color: antiquewhite;
   color: black;
   font-weight: bold;
   border-radius: 12px;
-  height: 800px;
+  height: 600px;
 }
 
 .classObject {
-  background: palevioletred;
-  padding: 5px;
-  border-radius: 10px;
-  height: 32px;
-  margin-bottom: 2px;
-  font-size: 12px;
-  line-height: 12px;
+  font-size: 10px;
+  line-height: 10px;
+  border-radius: 2px;
+  padding-top: 3px;
 }
 
 .classData {
