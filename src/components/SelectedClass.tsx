@@ -32,7 +32,7 @@ const SelectedClass = ({ name, day, start, end, color }) => {
 };
 
 function timeToMinutes(duration: string) {
-  const [hour, minute] = duration.split(":").map(Number);
+  var [hour, minute] = duration.split(":").map(Number);
   return hour * 60 + minute;
 }
 

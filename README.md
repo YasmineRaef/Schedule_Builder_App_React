@@ -1,73 +1,36 @@
-# React + TypeScript + Vite
+### Project:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Create a mini project mimicing a student schedule builder in React.
 
-Currently, two official plugins are available:
+### Built:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Created the full UI with hard-coded code with full **CSS** & **HTML**
+- Added a _CSS Grid_ for visualizing the added class schedule based on time and day of the week
+- Hard coded a time based 1-hour incrementing ruler to map classes based on time
+- Added the ability for the student/user to write the class name, enter the day, start time and end time of the class.
+- Created a class object to hold all data related to each class including the class name, class start time, end time, day, and the color.
 
-## React Compiler
+![[Pasted image 20260611140213.png]]
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Started with hard coding data on primary commits, then replaced with dynamic React states that re-render when hot restarted.
 
-## Expanding the ESLint configuration
+![[Pasted image 20260611140424.png]]
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Implmented a feature for class backgroung color changing when new classes are added based upon a predefined color array.
+- Implemented basic error handling for checking if the class name is empty before adding a class, and when the start date is after the end date or when they are equal.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+![[Pasted image 20260611135634.png]]
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Current Work in progress:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Align added classes with the time ruler to the left so that classes are added at the right corresponding time.
+- Add more data cleansing chacking on the data entered by the user to ensure data is error-free
+- Modify the class object sizing to make sure the height of the class is computed automatically based on duration computing.
+- Style and modify spacing to make the website more dynamic
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Extra features:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Will replace the course name text field to a search bar for the user to search for classes.
+- Add an edit/Update and Delete options on the class objects that are added in the grid
+- Make the website more dynamic by selecting and dragging classes where day and time will be automatically updated
+- Publish the final project on Gihub Pages.

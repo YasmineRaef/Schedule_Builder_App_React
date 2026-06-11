@@ -127,6 +127,8 @@ const App = () => {
             ].map((day) => (
               <div className="dayOfWeek" key="dayOfWeek">
                 <strong className="dayHeader">{day}</strong>
+                {/*!TODO: Implement the time sync of the added classes as we did
+                !TODO with the days of the week*/}
                 {classes
                   //@ts-expect-error
                   .filter((course) => course.day === day)
