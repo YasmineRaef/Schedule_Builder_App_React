@@ -3,7 +3,7 @@ const SelectedClass = ({ name, day, start, end }) => {
   return (
     <>
       <p className="classObject">
-        {name} - {day} - {start} - {end}
+        {name} - {start} to {end}
       </p>
     </>
   );

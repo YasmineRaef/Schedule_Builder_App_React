@@ -1,8 +1,11 @@
 import "./App.css";
 import SelectedClass from "./components/SelectedClass";
-import Class from "./components/SelectedClass";
+import { useState } from "react";
 
 const App = () => {
+  //Business Logic
+  const [classes, setClasses] = useState([]);
+
   return (
     <>
       <h1>Schedule Builder</h1>
@@ -11,31 +14,28 @@ const App = () => {
         name="addCourseForm"
         onSubmit={(event) => {
           event.preventDefault();
-          const courseName =
-            //@ts-expect-error
-            document.forms["addCourseForm"]["courseName"].value.trim();
-          const startTime =
-            //@ts-expect-error
-            document.forms["addCourseForm"]["startTime"].value.trim();
-          const endTime =
-            //@ts-expect-error
-            document.forms["addCourseForm"]["endTime"].value.trim();
-          const dayOfWeek =
-            //@ts-expect-error
-            document.forms["addCourseForm"]["dayPicker"].value.trim();
-          if (courseName == "") {
+
+          const courseName = event.target.courseName.value;
+          const start = event.target.startTime.value;
+          const end = event.target.endTime.value;
+          const day = event.target.dayPicker.value;
+
+          if (courseName === "") {
             alert("Please enter a course name first to be added.");
-            return false;
+            return;
           }
-          if (startTime == "" || startTime == endTime) {
+          if (start === "" || start === end) {
             alert("Please enter a valid course time.");
-            return false;
+            return;
           }
-          // alert("Entered Course is " + courseName);
-          // alert("Entered Day of Week is " + dayOfWeek);
-          // alert("Entered start time is " + startTime);
-          // alert("Entered end time is " + endTime);
-          return true;
+
+          const addedClass = { name: courseName, day, start, end };
+          //@ts-expect-error
+          setClasses([...classes, addedClass]);
+
+          event.target.courseName.value = "";
+          event.target.startTime.value = "";
+          event.target.endTime.value = "";
         }}
       >
         <div className="addSection">
@@ -72,59 +72,37 @@ const App = () => {
               Add Course
             </button>
           </div>
-          <hr></hr>
+          <hr />
           <div className="gridLayout">
-            <div className="dayOfWeek">
-              Saturday
-              <p className="classObject">testing1 with course name and time</p>
-              <p className="classObject">testing1</p>
-              <p className="classObject">testing1</p>
-              <p className="classObject">testing1</p>
-            </div>
-            <div className="dayOfWeek">
-              Sunday
-              <p className="classObject">testing1 with course name and time</p>
-              <p className="classObject">testing1</p>
-              <p className="classObject">testing1</p>
-              <p className="classObject">testing1</p>
-            </div>
-            <div className="dayOfWeek">
-              Monday
-              <SelectedClass
-                day="Monday"
-                name="CST 1201"
-                start="12:00PM"
-                end="1:00PM"
-              />
-            </div>
-            <div className="dayOfWeek">
-              Tuesday
-              <p className="classObject">testing1 with course name and time</p>
-              <p className="classObject">testing1</p>
-              <p className="classObject">testing1</p>
-              <p className="classObject">testing1</p>
-            </div>
-            <div className="dayOfWeek">
-              Wednesday
-              <p className="classObject">testing1 with course name and time</p>
-              <p className="classObject">testing1</p>
-              <p className="classObject">testing1</p>
-              <p className="classObject">testing1</p>
-            </div>
-            <div className="dayOfWeek">
-              Thursday
-              <p className="classObject">testing1 with course name and time</p>
-              <p className="classObject">testing1</p>
-              <p className="classObject">testing1</p>
-              <p className="classObject">testing1</p>
-            </div>
-            <div className="dayOfWeek">
-              Friday
-              <p className="classObject">testing1 with course name and time</p>
-              <p className="classObject">testing1</p>
-              <p className="classObject">testing1</p>
-              <p className="classObject">testing1</p>
-            </div>
+            {[
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday",
+            ].map((day) => (
+              <div className="dayOfWeek" key="dayOfWeek">
+                <strong>{day}</strong>
+                {classes
+                  //@ts-expect-error
+                  .filter((course) => course.day === day)
+                  .map((course, index) => (
+                    <SelectedClass
+                      key={index}
+                      //@ts-expect-error
+                      name={course.name}
+                      //@ts-expect-error
+                      day={course.day}
+                      //@ts-expect-error
+                      start={course.start}
+                      //@ts-expect-error
+                      end={course.end}
+                    />
+                  ))}
+              </div>
+            ))}
           </div>
         </div>
       </form>

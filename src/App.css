@@ -45,6 +45,7 @@ h2 {
 }
 
 .dayOfWeek {
+  padding: 8px;
   text-align: center;
   border: 2px solid grey;
   background-color: antiquewhite;
