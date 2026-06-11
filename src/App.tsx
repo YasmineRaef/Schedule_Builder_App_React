@@ -5,6 +5,7 @@ import { useState } from "react";
 const App = () => {
   //Business Logic
   const [classes, setClasses] = useState([]);
+  const [colorIndex, setColorIndex] = useState([0]);
   const timeSlots = [
     "",
     "8 AM",
@@ -20,6 +21,15 @@ const App = () => {
     "6 PM",
     "7 PM",
     "8 PM",
+  ];
+  const classColors = [
+    "#fa7d0f",
+    "#facb0f",
+    "#71fa0f",
+    "#0ffad3",
+    "#5b71fc",
+    "#9c0ffa",
+    "#ff54b5",
   ];
 
   return (
@@ -45,9 +55,18 @@ const App = () => {
             return;
           }
 
-          const addedClass = { name: courseName, day, start, end };
+          const addedClass = {
+            name: courseName,
+            day,
+            start,
+            end,
+            //@ts-expect-error
+            color: classColors[colorIndex],
+          };
           //@ts-expect-error
           setClasses([...classes, addedClass]);
+          //@ts-expect-error
+          setColorIndex((colorIndex + 1) % classColors.length);
 
           event.target.courseName.value = "";
           event.target.startTime.value = "";
@@ -122,6 +141,8 @@ const App = () => {
                       start={course.start}
                       //@ts-expect-error
                       end={course.end}
+                      //@ts-expect-error
+                      color={course.color}
                     />
                   ))}
               </div>
