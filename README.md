@@ -3,6 +3,8 @@
 Create a mini project mimicing a student schedule builder in React.
 
 ### Built:
+<img width="1990" height="1470" alt="schedule_builder" src="https://github.com/user-attachments/assets/aea2a2b1-10f8-49d8-be36-c79aad8f6513" />
+
 
 - Created the full UI with hard-coded code with full **CSS** & **HTML**
 - Added a *CSS Grid* for visualizing the added class schedule based on time and day of the week
